@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaBriefcase, FaFileDownload } from 'react-icons/fa';
+
 
 const Home = () => {
   const featuredProjects = [
     {
       title: 'Kalamu Verein Website',
       description: 'A dynamic WordPress website for a Germany-based NGO to support educational initiatives in African countries.',
-      image: 'https://via.placeholder.com/300', // Replace with actual project image
+      image: require('../Assets/images/Kalamu_Logo.png'),
       link: 'https://www.kalamu-verein.de/',
     },
     {
@@ -16,13 +18,34 @@ const Home = () => {
       link: 'https://essmaterwebapp20241219165119.azurewebsites.net/',
     },
     {
-      title: 'Portfolio Website',
-      description: 'A portfolio showcasing my projects, skills, and experience as a software developer.',
-      image: 'https://via.placeholder.com/300', // Replace with actual project image
+      title: 'MedCheck Mobile App',
+      description: 'A mobile application that allows users set notification reminders, view medical records, search for nearby pharmacies and hospitals, and also allows the user to research about any medication with its warnings, usages and dosages.',
+      image: require('../Assets/images/medcheck_logo.png'),
       link: '#',
     },
   ];
-
+  //------------------------------ Resume Section ------------------------------
+  const workExperience = [
+    {
+      company: 'Kalamu Verein',
+      role: 'Web Developer',
+      description: 'Develop and maintain a dynamic WordPress website for a Germany-based NGO, enhancing user experience and increasing outreach.',
+      duration: 'July 2024 - Present',
+    },
+    {
+      company: 'Materfamilia',
+      role: 'Full-Stack Developer',
+      description: 'Led the development of a full-stack web app, focusing on responsive frontend design and robust backend integration.',
+      duration: 'July 2024 - Present',
+    },
+    {
+      company: 'M&G Investment',
+      role: 'Data Clerk',
+      description: 'Digitized historical documents, improving data accessibility and streamlining archiving processes.',
+      duration: 'November 2022 - December 2022',
+    },
+  ];
+  //------------------------------ Education Section ------------------------------
   return (
     <div className="bg-dark-background text-dark-text min-h-screen">
       {/* Hero Section */}
@@ -46,7 +69,7 @@ const Home = () => {
     </div>
     </section>
 
-
+    
       {/* Featured Projects Section */}
         <section className="py-16 bg-dark-card">
             <div className="container mx-auto px-6">
@@ -83,6 +106,50 @@ const Home = () => {
             </div>
         </div>
     </section>
+
+    {/* Work Experience Section */}
+    <section className="py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
+          <div className="grid gap-8">
+            {workExperience.map((job, index) => (
+              <div
+                key={index}
+                className="bg-dark-card p-6 rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-2xl"
+              >
+                <div className="flex items-center mb-4">
+                  <FaBriefcase size={24} className="text-dark-accent mr-4" />
+                  <div>
+                    <h3 className="text-2xl font-bold">{job.company}</h3>
+                    <p className="text-dark-accent font-semibold">{job.role}</p>
+                    <p className="text-dark-textSecondary text-sm">{job.duration}</p>
+                  </div>
+                </div>
+                <p className="text-dark-text">{job.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+          <a
+              href={require('../Assets/resumes/Zacarias Antero Software Developer ENG.pdf')}
+              download="Zacarias_Antero_Resume_ENG.pdf"
+              className="inline-flex items-center bg-dark-accent text-dark-text px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300"
+            >
+              <FaFileDownload size={20} className="mr-2" />
+              Download Resume (English)
+            </a>
+            <a
+              href={('../Assets/resumes/Zacarias Antero Software Developer PT.pdf')}
+              download="Zacarias_Antero_Resume_PT.pdf"
+              className="ml-4 inline-flex items-center bg-dark-accent text-dark-text px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300"
+            >
+              <FaFileDownload size={20} className="mr-2" />
+              Download Resume (Portuguese)
+            </a>
+
+          </div>
+        </div>
+      </section>
 
     </div>
   );
