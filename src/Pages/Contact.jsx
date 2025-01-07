@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaLinkedin, FaPhone } from 'react-icons/fa';
-import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,21 +17,11 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    emailjs
-      .send(
-        'service_rvmxyd4',
-        'template_4twa6wh',
-        formData,
-        'MEDxRZ5R-4YNpUwPM'
-      )
-      .then(() => {
-        setFormStatus('Your message has been sent! Thank you for reaching out.');
-        setFormData({ name: '', email: '', message: '' });
-      })
-      .catch(() => {
-        setFormStatus('Failed to send the message. Please try again later.');
-      });
+
+    // Simulate form submission (or replace this with actual API integration later)
+    console.log('Form Submitted', formData);
+    setFormStatus('Your message has been sent! Thank you for reaching out.');
+    setFormData({ name: '', email: '', message: '' });
   };
 
   return (
@@ -105,7 +94,7 @@ const Contact = () => {
 
           {/* Contact Details */}
           <div className="flex flex-col space-y-6">
-            <h2 className="text-3xl font-bold text-dark-accent">Contact Details</h2>
+            <h2 className="text-3xl font-bold text-dark-accent">Other Ways to Connect</h2>
             <p className="text-dark-textSecondary">
               Feel free to reach out through any of the channels below.
             </p>
