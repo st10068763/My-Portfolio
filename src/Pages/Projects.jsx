@@ -105,9 +105,48 @@ const Projects = () => {
         link: 'https://github.com/st10068763/Weather-app.git',
     },
 
+    { title: 'Urban Dream',
+      description: 'Urban Dream is a real estate platform designed for users in Angola to list houses for sale, rent, and hotel rooms or guest houses. The platform prioritizes security and fraud prevention while providing a seamless experience for both property owners and potential buyers or renters. A listing fee model is implemented to generate income for the platform.',
+      images: [
+        require('../Assets/images/register.png'),
+        require('../Assets/images/password.png'),
+        require('../Assets/images/login.png'),
+        require('../Assets/images/account.png'),
+        require('../Assets/images/account2.png'),
+        require('../Assets/images/host.png'),
+        require('../Assets/images/home.png'),
+        require('../Assets/images/createListing.png'),
+        require('../Assets/images/createListing2.png'),
+        require('../Assets/images/createListing3.png'),
+        require('../Assets/images/createListing4.png'),
+        require('../Assets/images/createListing5.png'),
+      ],
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT', 'tailwindcss', 'Stripe'],
+      features: ['User authentication', 'Listing creation', 'Listing management', 'Messaging system', 'Payment gateway integration', 'User roles', 'User profile', 'Search and filter', 'Responsive design'],
+      link: 'https://github.com/st10068763/',
+    },
+    {
+      title: 'Cash Flow',
+      description: `Cashflow is a financial management application designed to help businesses and individuals track their income and expenses efficiently. It provides real-time analytics, cash flow projections, and automated reporting to help users make informed financial decisions with real time notifications to help users keep track of their payments.`,
+      images: [
+        require('../Assets/images/start.png'),
+        require('../Assets/images/cashflow0.png'),
+        require('../Assets/images/cashflow_Register.png'),
+        require('../Assets/images/cashflow2.png'),
+        require('../Assets/images/cashflow3.png'),
+        require('../Assets/images/cashflow4.png'),
+        require('../Assets/images/cashflow5.png'),
+        require('../Assets/images/cashflow6.png'),
+        require('../Assets/images/cashflow7.png'),
+        require('../Assets/images/cashflow8.png'),
+        require('../Assets/images/cashflow9.png'),
+        require('../Assets/images/cashflow10.png'),
+      ],
+      technologies: ['Kotlin', 'Android studio', 'GitHub', 'Firebase', 'Restful API','Realtimedatabase'],
+      features: ['Real-time analytics', 'Cash flow projections', 'Automated reporting', 'Real time notifications', 'User authentication', 'User profile', 'Search and filter', 'Responsive design'],
+      link: 'https://github.com/st10068763/CashFlow.git',
+    }
   ];
-
-  const filters = ['All', 'React', 'Node.js', 'Kotlin', 'WordPress'];
 
   const filteredProjects = projects.filter((project) => {
     const matchesFilter = filter === 'All' || project.technologies.includes(filter);
@@ -117,6 +156,8 @@ const Projects = () => {
       project.technologies.some((tech) => tech.toLowerCase().includes(searchTerm.toLowerCase()));
     return matchesFilter && matchesSearch;
   });
+
+  const filters = ['All', 'React', 'Node.js', 'MongoDB', 'Kotlin', 'Firebase', 'PHP', 'Express', 'JWT', 'Tailwind CSS', 'Stripe'];
 
   return (
     <div className="bg-dark-background text-dark-text min-h-screen p-6">
