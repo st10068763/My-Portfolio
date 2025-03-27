@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/My-Portfolio/static/css/main.3f0bb9b9.css",
-    "main.js": "/My-Portfolio/static/js/main.9f09e0fa.js",
+    "main.js": "/My-Portfolio/static/js/main.f838f202.js",
     "static/media/med9.PNG": "/My-Portfolio/static/media/med9.fbd3123468f325304738.PNG",
     "static/media/Bank3.png": "/My-Portfolio/static/media/Bank3.242afa42eaedf4be4602.png",
     "static/media/Bank1.png": "/My-Portfolio/static/media/Bank1.935c1425d0a89c029f96.png",
@@ -23,12 +23,19 @@
     "static/media/med2.PNG": "/My-Portfolio/static/media/med2.261eeff2eb20914c764c.PNG",
     "static/media/materfamilia1.png": "/My-Portfolio/static/media/materfamilia1.36957ee259e6c3251072.png",
     "static/media/med10.PNG": "/My-Portfolio/static/media/med10.159c8b1d9f1a732f33f4.PNG",
+    "static/media/community2.png": "/My-Portfolio/static/media/community2.5bdd1fde5187c483f012.png",
+    "static/media/community1.png": "/My-Portfolio/static/media/community1.4b41ab78b08a74e5bd72.png",
     "static/media/materfamilia.png": "/My-Portfolio/static/media/materfamilia.f1479fc81087ac8ec308.png",
     "static/media/Materfamilia Logo Png.png": "/My-Portfolio/static/media/Materfamilia Logo Png.90772de999f93f7c29f0.png",
     "static/media/med12.PNG": "/My-Portfolio/static/media/med12.9e5f648fb4039b144ccb.PNG",
+    "static/media/community3.png": "/My-Portfolio/static/media/community3.b51b9808892ecc6a77ff.png",
     "static/media/createListing4.png": "/My-Portfolio/static/media/createListing4.9c3a78e17945abd35b2d.png",
+    "static/media/community6.png": "/My-Portfolio/static/media/community6.e4decc83398022678fd4.png",
     "static/media/Zacarias Antero Software Developer PT.pdf": "/My-Portfolio/static/media/Zacarias Antero Software Developer PT.75d422995258db2d1e21.pdf",
     "static/media/Zacarias Antero Software Developer ENG.pdf": "/My-Portfolio/static/media/Zacarias Antero Software Developer ENG.d3db808b4eb22e23b433.pdf",
+    "static/media/community5.png": "/My-Portfolio/static/media/community5.7e65f3f07a076f39bdbb.png",
+    "static/media/community4.png": "/My-Portfolio/static/media/community4.e9f8bc489ad484e2833f.png",
+    "static/media/community.png": "/My-Portfolio/static/media/community.dd9d850a480f6683df0a.png",
     "static/media/kalamu1.png": "/My-Portfolio/static/media/kalamu1.20889fd4408284149465.png",
     "static/media/medcheck_logo.png": "/My-Portfolio/static/media/medcheck_logo.8549d7d97e62c6d7d6b5.png",
     "static/media/pluto3.png": "/My-Portfolio/static/media/pluto3.46f83c7e76ed40c689a8.png",
@@ -68,10 +75,10 @@
     "static/media/Kalamu_Logo.png": "/My-Portfolio/static/media/Kalamu_Logo.62f0d1516d174cda9d44.png",
     "index.html": "/My-Portfolio/index.html",
     "main.3f0bb9b9.css.map": "/My-Portfolio/static/css/main.3f0bb9b9.css.map",
-    "main.9f09e0fa.js.map": "/My-Portfolio/static/js/main.9f09e0fa.js.map"
+    "main.f838f202.js.map": "/My-Portfolio/static/js/main.f838f202.js.map"
   },
   "entrypoints": [
     "static/css/main.3f0bb9b9.css",
-    "static/js/main.9f09e0fa.js"
+    "static/js/main.f838f202.js"
   ]
 }
