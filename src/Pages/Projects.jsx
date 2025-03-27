@@ -145,6 +145,29 @@ const Projects = () => {
       technologies: ['Kotlin', 'Android studio', 'GitHub', 'Firebase', 'Restful API','Realtimedatabase'],
       features: ['Real-time analytics', 'Cash flow projections', 'Automated reporting', 'Real time notifications', 'User authentication', 'User profile', 'Search and filter', 'Responsive design'],
       link: 'https://github.com/st10068763/CashFlow.git',
+    },
+
+    {
+      title: 'Municipal Services Community App',
+      description: 'The Municipal Services Community App is a C# .NET Framework application designed to streamline municipal services and improve citizen engagement in South Africa. The application enables residents to report local issues, access community events and announcements, and track service request statuses efficiently.',
+      images: [
+        require('../Assets/images/community.png'),
+        require('../Assets/images/community1.png'),
+        require('../Assets/images/community2.png'),
+        require('../Assets/images/community3.png'),
+         require('../Assets/images/community4.png'),
+        require('../Assets/images/community5.png'),
+         require('../Assets/images/community6.png'),
+      ],
+      technologies: [ "C#", ".NET Framework","Visual Studio","GitHub","Sorted Queues","Graph Traversal Algorithms", 'Sorted Arrays'],
+      "features": [
+      "Report Issues - Allow residents to report municipal issues with descriptions, locations, and images.",
+      "Create Announcements - Municipal authorities can post local events and important notices.",
+      "Manage Services - Track and update the status of reported issues efficiently.",
+      "Real-time Issue Tracking - Users can monitor the progress of their reports.",
+      "Optimized Service Handling - Uses sorted queues and graph algorithms for issue prioritization."
+      ],
+      link: 'https://github.com/st10068763/Community_Service_App'
     }
   ];
 
