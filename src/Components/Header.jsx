@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaBars, FaTimes, FaHome, FaUser, FaCode, FaEnvelope } from 'react-icons/fa';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,87 +10,126 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const navItems = [
+    { path: '/', name: 'Home', icon: <FaHome className="md:hidden" /> },
+    { path: '/about', name: 'About', icon: <FaUser className="md:hidden" /> },
+    { path: '/projects', name: 'Projects', icon: <FaCode className="md:hidden" /> },
+    { path: '/contact', name: 'Contact', icon: <FaEnvelope className="md:hidden" /> }
+  ];
+
+  // Animation variants
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { 
+      opacity: 1, 
+      height: 'auto',
+      transition: {
+        duration: 0.3,
+        ease: 'easeInOut'
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      height: 0,
+      transition: {
+        duration: 0.2,
+        ease: 'easeInOut'
+      }
+    }
+  };
+
+  const navItemVariants = {
+    hidden: { x: -20, opacity: 0 },
+    visible: (i) => ({
+      x: 0,
+      opacity: 1,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.3
+      }
+    })
+  };
+
   return (
-    <header className="bg-dark-background shadow-md">
+    <motion.header 
+      className="bg-dark-background shadow-md sticky top-0 z-50"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, type: 'spring' }}
+    >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-dark-accent">
-          My Portfolio
-        </Link>
+        <motion.div whileHover={{ scale: 1.05 }}>
+          <Link to="/" className="text-2xl font-bold text-dark-accent flex items-center">
+            <span className="bg-dark-accent/10 px-3 py-1 rounded-lg">My Portfolio</span>
+          </Link>
+        </motion.div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-8">
-          <Link
-            to="/"
-            className="text-dark-text hover:text-dark-accent transition duration-300"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="text-dark-text hover:text-dark-accent transition duration-300"
-          >
-            About
-          </Link>
-          <Link
-            to="/projects"
-            className="text-dark-text hover:text-dark-accent transition duration-300"
-          >
-            Projects
-          </Link>
-          <Link
-            to="/contact"
-            className="text-dark-text hover:text-dark-accent transition duration-300"
-          >
-            Contact
-          </Link>
+        <nav className="hidden md:flex space-x-6">
+          {navItems.map((item, index) => (
+            <motion.div
+              key={item.path}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              variants={navItemVariants}
+            >
+              <Link
+                to={item.path}
+                className="text-dark-text hover:text-dark-accent transition duration-300 flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-dark-card"
+              >
+                {item.name}
+              </Link>
+            </motion.div>
+          ))}
         </nav>
 
         {/* Mobile Menu Toggle */}
-        <button
-          className="block md:hidden text-dark-text focus:outline-none"
+        <motion.button
+          className="block md:hidden text-dark-text focus:outline-none p-2 rounded-lg hover:bg-dark-card"
           onClick={toggleMenu}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-        </button>
+        </motion.button>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-dark-card shadow-md">
-          <nav className="flex flex-col space-y-4 py-4 px-6">
-            <Link
-              to="/"
-              className="text-dark-text hover:text-dark-accent transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="text-dark-text hover:text-dark-accent transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              to="/projects"
-              className="text-dark-text hover:text-dark-accent transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </Link>
-            <Link
-              to="/contact"
-              className="text-dark-text hover:text-dark-accent transition duration-300"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </Link>
-          </nav>
-        </div>
-      )}
-    </header>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden bg-dark-card shadow-lg overflow-hidden"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={mobileMenuVariants}
+          >
+            <nav className="flex flex-col space-y-2 py-4 px-6">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.path}
+                  variants={navItemVariants}
+                  custom={index}
+                >
+                  <Link
+                    to={item.path}
+                    className="text-dark-text hover:text-dark-accent transition duration-300 flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-dark-background/50"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.icon}
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 

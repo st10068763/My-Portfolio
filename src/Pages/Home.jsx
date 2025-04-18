@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaBriefcase, FaFileDownload } from 'react-icons/fa';
+import { FaBriefcase, FaFileDownload, FaExternalLinkAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import Footer from '../Components/Footer';
 
 const Home = () => {
   const featuredProjects = [
@@ -22,8 +24,8 @@ const Home = () => {
       title: 'MedCheck Mobile App',
       description:
         'A mobile application that allows users to set notification reminders, view medical records, search for nearby pharmacies and hospitals, and research medications with warnings and dosages.',
-      image: require('../Assets/images/medcheck_logo.png'),
-      link: '#',
+      image: require('../Assets/images/MedCheckIcon.png'),
+      link: 'https://appgallery.cloud.huawei.com/app/C113913581',
     },
   ];
 
@@ -51,100 +53,194 @@ const Home = () => {
     },
   ];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
     <div className="bg-dark-background text-dark-text min-h-screen">
       {/* Hero Section */}
-      <section className="text-center py-16">
+      <section className="text-center py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <img
-            src={require('../Assets/images/IMG_2262 - Copy.JPG')}
-            alt="Zacarias Antero"
-            className="mx-auto rounded-full w-40 h-40 mb-6 border-4 border-dark-accent shadow-lg animate-bounce"
-          />
-          <h1 className="text-5xl font-extrabold mb-4 animate-fade-in">
-            Zacarias Pinto Joao Antero
-          </h1>
-          <p className="text-lg max-w-2xl mx-auto leading-relaxed animate-fade-in">
-            Passionate Software Developer specializing in full-stack development, creating seamless user experiences and scalable backend solutions.
-          </p>
-          <Link
-            to="/about"
-            className="mt-6 inline-block bg-dark-accent text-dark-text px-6 py-2 rounded shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300 ease-in-out"
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: 'spring', stiffness: 100 }}
           >
-            Learn More About Me
-          </Link>
+            <img
+              src={require('../Assets/images/IMG_2262 - Copy.JPG')}
+              alt="Zacarias Antero"
+              className="mx-auto rounded-full w-40 h-40 md:w-48 md:h-48 mb-8 border-4 border-dark-accent shadow-lg object-cover"
+            />
+          </motion.div>
+          <motion.h1 
+            className="text-4xl md:text-5xl font-extrabold mb-4"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Zacarias Pinto Joao Antero
+          </motion.h1>
+          <motion.p 
+            className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-8"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Passionate Software Developer specializing in full-stack development, creating seamless user experiences and scalable backend solutions.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Link
+              to="/about"
+              className="mt-6 inline-block bg-dark-accent text-dark-text px-8 py-3 rounded-lg shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300 ease-in-out transform hover:-translate-y-1"
+            >
+              Learn More About Me
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-16 bg-dark-card">
+      <section className="py-16 md:py-24 bg-dark-card">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">Featured Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Featured Projects
+          </motion.h2>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {featuredProjects.map((project, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-dark-background rounded-lg shadow-lg p-6 hover:shadow-2xl transition transform hover:scale-105"
+                className="bg-dark-background rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02] flex flex-col h-full"
+                variants={itemVariants}
+                whileHover={{ y: -5 }}
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="rounded-lg w-full h-48 object-cover mb-4"
-                />
-                <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                <p className="text-dark-textSecondary mb-4">{project.description}</p>
-                <Link
-                  to={project.link}
-                  className="bg-dark-accent text-dark-text px-4 py-2 rounded-lg shadow hover:bg-dark-accentHover transition duration-300 ease-in-out"
+                <div className="overflow-hidden rounded-lg mb-5 h-48 flex items-center justify-center bg-dark-card">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="rounded-lg w-full h-full object-contain p-4"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                <p className="text-dark-textSecondary mb-5 flex-grow">{project.description}</p>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-dark-accent text-dark-text px-4 py-2 rounded-lg shadow hover:bg-dark-accentHover transition duration-300 ease-in-out"
                 >
-                  View Project
-                </Link>
-              </div>
+                  View Project <FaExternalLinkAlt className="ml-2" size={12} />
+                </a>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Work Experience Section */}
-      <section className="py-16">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">Work Experience</h2>
-          <div className="relative">
-            <div className="absolute h-full border-l-2 border-dark-accent left-4 top-0"></div>
-            {workExperience.map((job, index) => (
-              <div key={index} className="mb-8 flex items-center">
-                <div className="w-8 h-8 bg-dark-accent rounded-full flex items-center justify-center text-white">
-                  <FaBriefcase />
-                </div>
-                <div className="ml-8 bg-dark-card p-6 rounded-lg shadow-lg">
-                  <h3 className="font-bold text-xl">{job.company}</h3>
-                  <p className="text-dark-accent font-semibold">{job.role}</p>
-                  <p className="text-dark-textSecondary text-sm">{job.duration}</p>
-                  <p className="text-sm mt-2">{job.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <a
-              href={require('../Assets/resumes/Zacarias Antero Software Developer ENG.pdf')}
-              download="Zacarias_Antero_Resume_ENG.pdf"
-              className="inline-flex items-center bg-dark-accent text-dark-text px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300"
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Work Experience
+          </motion.h2>
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute h-full border-l-2 border-dark-accent left-5 md:left-6 top-0"></div>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              <FaFileDownload size={20} className="mr-2" />
+              {workExperience.map((job, index) => (
+                <motion.div 
+                  key={index} 
+                  className="mb-10 flex items-start"
+                  variants={itemVariants}
+                >
+                  <div className="w-10 h-10 bg-dark-accent rounded-full flex items-center justify-center text-white flex-shrink-0">
+                    <FaBriefcase />
+                  </div>
+                  <div className="ml-8 bg-dark-card p-6 rounded-xl shadow-lg w-full hover:shadow-xl transition duration-300">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-baseline">
+                      <h3 className="font-bold text-xl">{job.company}</h3>
+                      <p className="text-dark-textSecondary text-sm mt-1 md:mt-0">{job.duration}</p>
+                    </div>
+                    <p className="text-dark-accent font-semibold mb-2">{job.role}</p>
+                    <p className="text-sm">{job.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+          <motion.div 
+            className="text-center mt-16 flex flex-col sm:flex-row justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <a
+              href={require('../Assets/resumes/Zacarias Antero.pdf')}
+              download="Zacarias_Antero_Resume_ENG.pdf"
+              className="inline-flex items-center justify-center bg-dark-accent text-dark-text px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300 transform hover:-translate-y-1"
+            >
+              <FaFileDownload size={18} className="mr-3" />
               Download Resume (English)
             </a>
             <a
               href={require('../Assets/resumes/Zacarias Antero Software Developer PT.pdf')}
               download="Zacarias_Antero_Resume_PT.pdf"
-              className="ml-4 inline-flex items-center bg-dark-accent text-dark-text px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300"
+              className="inline-flex items-center justify-center bg-dark-accent text-dark-text px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-dark-accentHover transition duration-300 transform hover:-translate-y-1"
             >
-              <FaFileDownload size={20} className="mr-2" />
+              <FaFileDownload size={18} className="mr-3" />
               Download Resume (Portuguese)
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
+
+       {/* Footer */}
+            <Footer />
     </div>
   );
 };
