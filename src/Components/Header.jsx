@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes, FaHome, FaUser, FaCode, FaEnvelope } from 'react-icons/fa';
+import logo from '../Assets/images/logo-removebg.png'; 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,10 +59,19 @@ const Header = () => {
       transition={{ duration: 0.5, type: 'spring' }}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - Updated with your logo */}
         <motion.div whileHover={{ scale: 1.05 }}>
-          <Link to="/" className="text-2xl font-bold text-dark-accent flex items-center">
-            <span className="bg-dark-accent/10 px-3 py-1 rounded-lg">My Portfolio</span>
+          <Link to="/" className="flex items-center gap-2">
+            {/* Replace with your logo image */}
+            <img 
+              src={logo} 
+              alt="Zacarias Logo" 
+              className="h-10 w-auto" // Adjust height as needed
+            />
+            {/* Optional: Keep text logo or remove it */}
+            <span className="text-2xl font-bold text-dark-accent hidden md:block">
+              Zacarias Antero
+            </span>
           </Link>
         </motion.div>
 

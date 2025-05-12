@@ -10,19 +10,62 @@ const Contact = () => {
     message: '',
   });
 
-  const [formStatus, setFormStatus] = useState('');
+    const [formStatus, setFormStatus] = useState({
+    message: '',
+    isSuccess: false,
+    isError: false
+    });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate form submission
-    console.log('Form Submitted', formData);
-    setFormStatus('Your message has been sent! Thank you for reaching out.');
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    setFormStatus({ message: '', isSuccess: false, isError: false });
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/anterozacarias007@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: 'New Contact Form Submission',
+          _template: 'table', // Makes the email look nicer
+          _captcha: 'false' // Disables captcha for testing
+        })
+      });
+      const data = await response.json();
+      
+      if (data.success === "true") {
+        setFormStatus({
+          message: 'Your message has been sent successfully! Thank you for reaching out.',
+          isSuccess: true,
+          isError: false
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      setFormStatus({
+        message: 'There was an error sending your message. Please try again later or contact me directly.',
+        isSuccess: false,
+        isError: true
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Animation variants
@@ -73,6 +116,17 @@ const Contact = () => {
               className="bg-dark-card p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input 
+                  type="hidden" 
+                  name="_next" 
+                  value="https://yourdomain.com/thank-you" 
+                />
+                <input 
+                  type="hidden" 
+                  name="_autoresponse" 
+                  value="Thank you for contacting me! I'll get back to you soon." 
+                />
+                
                 <motion.div variants={itemVariants}>
                   <label htmlFor="name" className="block text-sm font-bold mb-2 text-dark-accent">
                     Name:
@@ -125,19 +179,29 @@ const Contact = () => {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-dark-accent text-dark-text py-3 rounded-lg hover:bg-dark-accentHover transition duration-300 shadow-md flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className={`w-full ${isSubmitting ? 'bg-dark-accent/70' : 'bg-dark-accent'} text-dark-text py-3 rounded-lg hover:bg-dark-accentHover transition duration-300 shadow-md flex items-center justify-center gap-2`}
                 >
-                  <FaPaperPlane /> Send Message
+                  {isSubmitting ? (
+                    'Sending...'
+                  ) : (
+                    <>
+                      <FaPaperPlane /> Send Message
+                    </>
+                  )}
                 </motion.button>
               </form>
               
-              {formStatus && (
+              {formStatus.message && (
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="mt-4 text-center text-green-500 font-medium"
+                  className={`mt-4 text-center font-medium ${
+                    formStatus.isSuccess ? 'text-green-500' : 
+                    formStatus.isError ? 'text-red-500' : 'text-dark-text'
+                  }`}
                 >
-                  {formStatus}
+                  {formStatus.message}
                 </motion.p>
               )}
             </motion.div>
