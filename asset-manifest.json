@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/My-Portfolio/static/css/main.301074df.css",
-    "main.js": "/My-Portfolio/static/js/main.701233ca.js",
+    "main.css": "/My-Portfolio/static/css/main.23dd73f9.css",
+    "main.js": "/My-Portfolio/static/js/main.efd11920.js",
     "static/media/Bank3.png": "/My-Portfolio/static/media/Bank3.242afa42eaedf4be4602.png",
     "static/media/Bank1.png": "/My-Portfolio/static/media/Bank1.935c1425d0a89c029f96.png",
     "static/media/Bank.png": "/My-Portfolio/static/media/Bank.e38e98281b1c5b653aa9.png",
@@ -58,6 +58,7 @@
     "static/media/languages.jpg": "/My-Portfolio/static/media/languages.d5b29316e3ed4c15af95.jpg",
     "static/media/Bank6.png": "/My-Portfolio/static/media/Bank6.f12f4f14f5fd3d98e92b.png",
     "static/media/step1.jpg": "/My-Portfolio/static/media/step1.0c211a0ad0f2706bdfcc.jpg",
+    "static/media/logo-removebg.png": "/My-Portfolio/static/media/logo-removebg.531546127fdc680ca103.png",
     "static/media/createListing.png": "/My-Portfolio/static/media/createListing.5b33256bbad9a678f968.png",
     "static/media/password.png": "/My-Portfolio/static/media/password.c0e545880dfc9cc8c0a3.png",
     "static/media/register.png": "/My-Portfolio/static/media/register.9f746ba1ed88078459c6.png",
@@ -67,11 +68,11 @@
     "static/media/login.png": "/My-Portfolio/static/media/login.751e45db67e2acb33c49.png",
     "static/media/Kalamu_Logo.png": "/My-Portfolio/static/media/Kalamu_Logo.62f0d1516d174cda9d44.png",
     "index.html": "/My-Portfolio/index.html",
-    "main.301074df.css.map": "/My-Portfolio/static/css/main.301074df.css.map",
-    "main.701233ca.js.map": "/My-Portfolio/static/js/main.701233ca.js.map"
+    "main.23dd73f9.css.map": "/My-Portfolio/static/css/main.23dd73f9.css.map",
+    "main.efd11920.js.map": "/My-Portfolio/static/js/main.efd11920.js.map"
   },
   "entrypoints": [
-    "static/css/main.301074df.css",
-    "static/js/main.701233ca.js"
+    "static/css/main.23dd73f9.css",
+    "static/js/main.efd11920.js"
   ]
 }
